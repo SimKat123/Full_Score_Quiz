@@ -11,7 +11,7 @@ var questions = [
   {
     title: "What is header element?",
     options: {1: "h1",
-      2: "p",},
+      2: "p"},
     answer: "h1",
   },
   {
@@ -33,11 +33,11 @@ var questions = [
     answer: "Datatype",
   },
 ];
-
 var currentQuestion = 0;
 var questIndex = questions[currentQuestion];
 var optSelect= questions[currentQuestion].options;
 var corrAns= questions[currentQuestion].answer;
+var choices2=questIndex.options[1]
 
 // Timer
 function startTimer() {
@@ -59,9 +59,10 @@ function startGame() {
 }
 
 function getQuestion() {
-    choices.innerHTML="";
+    questIndex.options[1].innerHTML="";
     questionTitle.textContent = questIndex.title;
-    choices.textContent = questIndex.options;
+    choices.textContent = questIndex.options[0];
+    choices2.textContent = questIndex.options[1];
     //create a button, display the choice on that button, append that button to choices var
     var choicesBtn = document.createElement("button");
     choicesBtn.textContent = optSelect;
@@ -72,16 +73,16 @@ console.log(optSelect);
 function checkQuestion(event) {
     var buttonEl=event.target;
     console.log(buttonEl);
-    currentQuestion++;
-    getQuestion();
-    // if (correct.matches(questIndex.answer)) {
-    //     currentQuestion++;
-    //   getQuestion();
-    // } else {
-    //   secondsLeft-5;
-    //   currentQuestion++;
-    //   getQuestion();
-    // }
+    // currentQuestion++;
+    // getQuestion();
+    if (correct.matches(corrAns)) {
+        currentQuestion++;
+      getQuestion();
+    } else {
+      secondsLeft-5;
+      currentQuestion++;
+      getQuestion();
+    }
 
 }
 
