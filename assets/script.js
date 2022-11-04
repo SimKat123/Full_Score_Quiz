@@ -1,55 +1,91 @@
-// Start Button
-function startGame {
-    // click button, hides all beginning text and shows questions
-}
-// Timer stuff with EventListener so timer starts with button click
-
-// Timer
-var seconds=50;
-var timer;
-function timer() {
-    time.textContent = secondsLeft
-    timer = setInterval (function () {
-        secondsLeft--;
-        timer.textContent = secondsLeft
-
-        if (secondsLeft === 0) {
-            clearInterval (timer);
-        }
-    })
-}
-
-// Function that renders a question
+var secondsLeft = 60;
+var time = document.querySelector("#time");
+var startBtn = document.querySelector("#start");
+var questionTitle = document.querySelector("#question-title");
+var options= document.querySelector("#options");
+var choices = document.querySelector("#choices");
+var correct = document.querySelector("#answer");
 
 // Variable for questions array
 var questions = [
-    {
-        question: "What is header element?",
-        choices: ["<h1>", "<p>"],
-        answer: "<h1>",
-    },
-    {
-        question: "What is a string?",
-        choices: ["Datatype", "a long rope  made of cotton"]
-        answer: "Datatype",
-    },
-
+  {
+    title: "What is header element?",
+    choices: {1: "h1", 2: "p",},
+    answer: "h1",
+  },
+  {
+    title: "What is a string?",
+    choices: {1: "Datatype", 2: "a long rope  made of cotton",},
+    answer: "Datatype",
+  },
+  {
+    title: "What is header element?",
+    choices: {1: "h1", 2: "p",},
+    answer: "h1",
+  },
+  {
+    title: "What is a string?",
+    choices: {1: "Datatype", 2: "a long rope  made of cotton",},
+    answer: "Datatype",
+  },
 ];
-// var quizQuestion = {
-//     question: "What is a string?",
-//     answer: [{ text: "Datatype", isCorrect : true}, { text:"a long rope  made of cotton", is }]
-// }
 
+var currentQuestion = 0;
+var questIndex = questions[currentQuestion];
 
-// Shows is selected answer was correct or not
-    // Use event.target for the buttons to: (get question object at index 0 and index++ for next question) (questions[0].
-    // Wrong answer should have a button that holds a data-attrbute to say is the answer is incorrect
-        // if statement for subtracting from timer for incorrect answers
-    // Correct answer should have a button that holds a data-attrbute to say is the answer is correct
-        // if correct -> next question (index ++)
+// Timer
+function startTimer() {
+  time.textContent = secondsLeft + " seconds left";
+  var timer = setInterval(function () {
+    secondsLeft--;
+    time.textContent = secondsLeft + " seconds left";
 
-// Answering question triggers another question
+    if (secondsLeft === 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+
+// Start Button
+function startGame() {
+    startTimer();
+    getQuestion();
+}
+
+function getQuestion() {
+    choices.innerHTML="";
+    questionTitle.textContent = questIndex.title;
+    options.textContent = questIndex.choices;
+    //create a button, display the choice on that button, append that button to choices var
+    var choicesBtn = document.createElement("button");
+    choicesBtn.textContent = currentQuestion.title;
+    choices.appendChild(choicesBtn);
+}
+
+function checkQuestion(event) {
+    var buttonEl=event.target;
+    console.log(buttonEl);
+    currentQuestion++;
+    getQuestion();
+    // if (correct.matches(questIndex.answer)) {
+    //     currentQuestion++;
+    //   getQuestion();
+    // } else {
+    //   secondsLeft-5;
+    //   currentQuestion++;
+    //   getQuestion();
+    // }
+
+}
+
+// EventListener so timer and quiz starts with button click
+choices.addEventListener("click", checkQuestion);
+startBtn.addEventListener("click", startGame);
+
+// Wrong answer should have a button that holds a data-attrbute to say is the answer is incorrect
+// if statement for subtracting from timer for incorrect answers
+// Correct answer should have a button that holds a data-attrbute to say is the answer is correct
+// if correct -> next question (index ++)
 
 // When all questions are answered or when timer runs out, display game over
-    // Gamer over coditions
-    //  Store initials and score in local storage.
+// Gamer over coditions Store initials and score in local storage

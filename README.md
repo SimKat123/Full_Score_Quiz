@@ -2,7 +2,7 @@
 
 ## Description
 
-A website to test your JavaScript Knowledge.
+A website to test your basic Coding Knowledge.
 
 ## Installation
 
@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-Open through any internet browser and click the Start Quiz Button to test your knowledge about JavaScript.
+Open through any internet browser and click the Start Quiz Button to test your knowledge about Coding.
 
 ## Credits
 
@@ -20,14 +20,9 @@ N/A
 
 Please refer to the LICENSE in the repo.
 
-
-
-
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
-
-
 
 GIVEN I am taking a code quiz
 WHEN I click the start button

@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <section class="scores">
+      <a href="./highscores.html">View High Scores</a>
+    </section>
+
+    <section class="timer">Time: <span id="time">0</span></section>
+
+    <main>
+      <section class="start">
+        <h1>Coding Quiz</h1>
+        <p>
+          Do you want to test your basic Coding knowledge? Try this short Quiz
+          to find how well you know your stuff. Remember, wrong answers will
+          decrease your time by 5 seconds. Click the "Start Quiz" button to
+          test your knowledge.
+        </p>
+        <button id="start">Start Quiz</button>
+      </section>
+
+      <section class="questions">
+        <h2 id="question-title"></h2>
+        <section id="choices">
+            <h4 id="options"></h4>
+        </section>
+        <section id="answer"></section> 
+      </section>
+
+      <section id="game-over" class="hidden">
+        <h2>
+          The quiz is now over!
+          <p>
+            Your final score for this attempt is <span id="final-score"></span>
+          </p>
+          <p>
+            Enter initials: <input type="text" id="name" />
+            <button id="submit">Submit</button>
+          </p>
+        </h2>
+      </section>
+    </main>
+  </body>
+  <script src="./assets/script.js"></script>
 </html>
