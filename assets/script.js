@@ -2,7 +2,7 @@ var secondsLeft = 60;
 var time = document.querySelector("#time");
 var startBtn = document.querySelector("#start");
 var questionTitle = document.querySelector("#question-title");
-var options= document.querySelector("#options");
+// var options= document.querySelector("#options");
 var choices = document.querySelector("#choices");
 var correct = document.querySelector("#answer");
 
@@ -10,28 +10,34 @@ var correct = document.querySelector("#answer");
 var questions = [
   {
     title: "What is header element?",
-    choices: {1: "h1", 2: "p",},
+    options: {1: "h1",
+      2: "p",},
     answer: "h1",
   },
   {
     title: "What is a string?",
-    choices: {1: "Datatype", 2: "a long rope  made of cotton",},
+    options: {1: "Datatype",
+      2: "a long rope  made of cotton",},
     answer: "Datatype",
   },
   {
     title: "What is header element?",
-    choices: {1: "h1", 2: "p",},
+    options: {1: "h1",
+      2: "p",},
     answer: "h1",
   },
   {
     title: "What is a string?",
-    choices: {1: "Datatype", 2: "a long rope  made of cotton",},
+    options: {1: "Datatype",
+      2: "a long rope  made of cotton",},
     answer: "Datatype",
   },
 ];
 
 var currentQuestion = 0;
 var questIndex = questions[currentQuestion];
+var optSelect= questions[currentQuestion].options;
+var corrAns= questions[currentQuestion].answer;
 
 // Timer
 function startTimer() {
@@ -55,12 +61,13 @@ function startGame() {
 function getQuestion() {
     choices.innerHTML="";
     questionTitle.textContent = questIndex.title;
-    options.textContent = questIndex.choices;
+    choices.textContent = questIndex.options;
     //create a button, display the choice on that button, append that button to choices var
     var choicesBtn = document.createElement("button");
-    choicesBtn.textContent = currentQuestion.title;
+    choicesBtn.textContent = optSelect;
     choices.appendChild(choicesBtn);
 }
+console.log(optSelect);
 
 function checkQuestion(event) {
     var buttonEl=event.target;
